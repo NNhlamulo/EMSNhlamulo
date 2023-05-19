@@ -1,28 +1,29 @@
-package com.nhlamulo.NasworldSpring.employee;
+package com.nhlamulo.NasworldSpring.employee.controller;
 
+import com.nhlamulo.NasworldSpring.employee.service.EmployeeServiceImpl;
+import com.nhlamulo.NasworldSpring.employee.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @RestController
 @RequestMapping("api/nasworld")
 public class EmployeeController {
-    private final EmployeeService employeeService;
+    private final EmployeeServiceImpl employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }
 
     @GetMapping
     public List<Employee> getEmployee() {
-        return employeeService.getEmployee();
+        return employeeService.getEmployees();
 
 
     }
+
 
     @PostMapping
     public void registerNewEmployee(@RequestBody Employee employee){
